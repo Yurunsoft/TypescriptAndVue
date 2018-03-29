@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<script src="plugin/jquery/jquery-1.12.0.min.js"></script>
+	<script src="plugin/require/require.js"></script>
+	<script>
+	var oldRequire = require;
+	var require = function(){
+		if(arguments.length > 0 && typeof(arguments[0]) === 'string')
+		{
+			arguments[0] = [arguments[0]];
+		}
+		oldRequire.apply(this, arguments);
+	}
+	// 配置js的基础路径
+	var baseUrl = 'js';
+	requirejs.config({
+		baseUrl: baseUrl,
+		paths :{
+			vue: '/plugin/vue/vue',
+			text: '/plugin/require/text',
+		}
+	});
+	</script>
+</head>
+<body>
+	<div id="body">
+		<test ref="test1"></test>
+		<button type="button" @click="fuckContent()">点我试试</button>
+		<p>
+			解决了传统开发方式（非SPA）使用 TypeScript + Vue 时候开发的痛点。无需webpack（因为它更适合SPA应用），只使用gulp实现编译和模版文件复制。
+		</p>
+	</div>
+	<script>
+		// 调用test
+		require('test');
+	</script>
+</body>
+</html>

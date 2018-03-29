@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "target": "ES5",
+		"module": "amd",
+		"outDir": "./js",
+		"baseUrl": "./ts",
+		"sourceMap": true,
+		"allowJs": false,
+		"strict": true,
+		"moduleResolution": "node",
+		"allowSyntheticDefaultImports": true,
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true,
+		"noImplicitAny": false,
+		"noImplicitReturns": true,
+		"removeComments": true
+	}
+}
