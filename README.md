@@ -2,9 +2,11 @@
 
 这是一个已经配置好的 TypeScript + Vue 传统多页面开发模式项目。
 
-本 demo 中的 ts 代码仅供参考，不是最佳方案。
+本 demo 中的 ts 代码仅供参考，不是最佳方案，后续会优化更新。
 
 这一套配置，我花了4天研究出来，也算是弥补这一领域的空缺吧。前端高手勿喷，我只是一个更倾向于后端的开发者，多页面应用目前确实还有很多应用，否则 layui 也不会这么受欢迎了！
+
+欢迎各位大佬加入QQ群：74401592 [![点击加群](https://pub.idqqimg.com/wpa/images/group.png "点击加群")](https://shang.qq.com/wpa/qunwpa?idkey=e2e6b49e9a648aae5285b3aba155d59107bb66fde02e229e078bd7359cac8ac3) 前后端全方位技术交流探讨。
 
 ## 项目组成
 
