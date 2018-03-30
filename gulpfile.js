@@ -1,6 +1,9 @@
 var gulp = require('gulp');
 var ts = require('gulp-typescript');
+var watch = require('gulp-watch');
 var sourcemaps = require('gulp-sourcemaps');
+var path = require('path');
+var fileSystem = require('fs');
 
 var tsProject = ts.createProject('./tsconfig.json');
 
@@ -22,6 +25,39 @@ function compile() {
 }
 
 gulp.task('default', function () {
-    gulp.watch(srcPath + '/**/*', () => compile());
+    // 启动时重新编译
     compile();
+    // 监听更改
+    watch(srcPath + '/**/*', function(e){
+        switch(e.event)
+        {
+            case 'add':
+            case 'change':
+                if('.ts' === e.extname)
+                {
+                    gulp.src(e.path, {base : srcPath})
+                        .pipe(sourcemaps.init())
+                        .pipe(tsProject())
+                        .pipe(sourcemaps.write())
+                        .pipe(gulp.dest(targetPath));
+                }
+                else
+                {
+                    gulp.src(e.path, {base : srcPath})
+                        .pipe(gulp.dest(targetPath))
+                }
+                break;
+            case 'unlink':
+                var fileName = '';
+                if('.ts' === e.extname)
+                {
+                    fileName = targetPath + '/' + path.relative(srcPath, e.dirname + '/' + e.stem + '.js');
+                }
+                else
+                {
+                    fileName = targetPath + '/' + path.relative(srcPath, e.path);
+                }
+                fileSystem.existsSync(fileName) && fileSystem.unlink(fileName);
+        }
+    });
 });

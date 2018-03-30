@@ -11,6 +11,9 @@
         "gulp": "*",
         "gulp-sourcemaps": "*",
         "gulp-typescript": "*",
+        "gulp-watch": "*",
+        "path": "*",
+        "fs": "*",
         "requirejs": "*",
         "requirejs-text": "*"
     },
